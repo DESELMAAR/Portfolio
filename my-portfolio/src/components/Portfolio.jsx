@@ -1,0 +1,324 @@
+import React, { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, ArrowRight, Download, Rocket, Sparkles, Moon, Sun, Code2, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+// ————————————————————————————————————————————————
+// Portfolio – Single-file React component
+// Tech: React + Tailwind + Framer Motion + shadcn/ui + lucide-react
+// Language: FR (texte), design moderne, transitions fluides
+// ————————————————————————————————————————————————
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const projects = [
+  {
+    title: "Gestion d'Absences",
+    description:
+      "Application Full‑Stack (Spring Boot + React) pour gérer classes, profs, emplois du temps et absences.",
+    tags: ["React", "Spring Boot", "JWT", "Tailwind"],
+    link: "https://github.com/username/projet_gestion_absences",
+  },
+  {
+    title: "App Événements",
+    description:
+      "Plateforme d'événements (création, réservation, likes) avec filtres, upload et FormData.",
+    tags: ["React", "Vite", "Node", "MongoDB"],
+    link: "https://github.com/username/appevent",
+  },
+  {
+    title: "Food Delivery API",
+    description:
+      "API Laravel 11 (Spatie Permissions) – rôles Admin/Restaurant/Client, menus et commandes.",
+    tags: ["Laravel 11", "MySQL", "REST", "Spatie"],
+    link: "https://github.com/username/food-delivery-api",
+  },
+];
+
+const skills = [
+  "React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion",
+  "Laravel", "Spring Boot", "MySQL", "PostgreSQL", "Redis",
+  "Docker", "Git/GitHub", "CI/CD", "JWT", "Zod",
+];
+
+export default function Portfolio() {
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+  }, [theme]);
+
+  const year = useMemo(() => new Date().getFullYear(), []);
+
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <div className="min-h-screen  dark:from-zinc-950 dark:to-zinc-900 text-foreground selection:bg-indigo-500/30">
+      {/* Floating blobs background */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 0.6, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute -top-20 -left-24 h-80 w-80 rounded-full bg-indigo-400/30 blur-3xl dark:bg-indigo-600/20"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 0.55, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+          className="absolute -bottom-24 -right-16 h-96 w-96 rounded-full bg-fuchsia-400/30 blur-3xl dark:bg-fuchsia-600/20"
+        />
+      </div>
+
+      {/* Navbar */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-background/70 ">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <a href="#hero" className="flex items-center gap-2 font-semibold">
+            <Rocket className="h-5 w-5" /> Samad · Portfolio
+          </a>
+          <nav className="hidden gap-6 md:flex">
+            {[
+              { id: "about", label: "À propos" },
+              { id: "projects", label: "Projets" },
+              { id: "skills", label: "Compétences" },
+              { id: "contact", label: "Contact" },
+            ].map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToId(item.id)}
+                className="text-sm text-muted-foreground transition hover:text-foreground"
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://github.com/username"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 transition hover:bg-accent"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+            <a
+              href="https://linkedin.com/in/username"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 transition hover:bg-accent"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <button
+              onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 transition hover:bg-accent"
+              aria-label="Basculer le thème"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section id="hero" className="mx-auto max-w-6xl px-4 pt-16 sm:pt-24">
+        <motion.div variants={stagger} initial="hidden" animate="show" className="grid items-center gap-10 md:grid-cols-2">
+          <div>
+            <motion.p variants={fadeUp} className="mb-3 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs text-muted-foreground">
+              <Sparkles className="h-3.5 w-3.5" /> Disponible pour missions freelance
+            </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl"
+            >
+              Bonjour, je suis <span className="bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-rose-500 bg-clip-text text-transparent">Abdessamad (Samad)</span>
+            </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 max-w-xl text-base text-muted-foreground sm:text-lg"
+            >
+              Développeur Full‑Stack passionné (React · Laravel · Spring Boot). J'aime construire des interfaces élégantes et des APIs robustes, avec des transitions fluides.
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
+              <Button onClick={() => scrollToId("projects")} className="rounded-2xl">
+                Voir mes projets <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" asChild className="rounded-2xl">
+                <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Me contacter</a>
+              </Button>
+              <Button variant="secondary" asChild className="rounded-2xl">
+                <a href="/cv.pdf" download>
+                  <Download className="mr-2 h-4 w-4" /> Télécharger CV
+                </a>
+              </Button>
+            </motion.div>
+          </div>
+          <motion.div variants={fadeUp} className="relative mx-auto aspect-square w-full max-w-md">
+            {/* Simple avatar/preview */}
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 via-fuchsia-500/20 to-rose-500/20 blur-xl" />
+            <div className="relative flex h-full w-full items-center justify-center rounded-[2rem] border border-border/50 bg-background/70 p-8 shadow-xl backdrop-blur">
+              <Code2 className="h-24 w-24" />
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* À propos */}
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20">
+        <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
+          <motion.h2 variants={fadeUp} className="text-2xl font-bold sm:text-3xl">À propos</motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 max-w-3xl text-muted-foreground">
+            J'orchestre des stacks modernes et maintenables, avec des tests, une CI soignée et un sens affûté de l'UX. 
+            Côté backend : APIs REST sécurisées (JWT, RBAC) et persistance SQL. Côté frontend : Vite, Zustand, requêtes efficientes, accessibilité et performance.
+          </motion.p>
+          <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
+            {skills.slice(0, 8).map((s) => (
+              <span key={s} className="rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs text-muted-foreground">
+                {s}
+              </span>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Projets */}
+      <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20">
+        <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
+          <motion.div variants={fadeUp} className="mb-6 flex items-center justify-between gap-2">
+            <h2 className="text-2xl font-bold sm:text-3xl">Projets en vedette</h2>
+            <a
+              href="https://github.com/username"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-muted-foreground underline-offset-4 hover:underline"
+            >
+              Tous les dépôts
+            </a>
+          </motion.div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((p, idx) => (
+              <motion.div
+                key={p.title}
+                variants={fadeUp}
+                custom={idx}
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 220, damping: 20 }}
+              >
+                <Card className="group h-full overflow-hidden rounded-2xl border border-border/60">
+                  <CardHeader className="space-y-1">
+                    <CardTitle className="flex items-center justify-between text-lg">
+                      {p.title}
+                      <span className="text-xs font-normal text-muted-foreground">{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="mb-4 aspect-video w-full rounded-xl border border-border/60 bg-gradient-to-br from-indigo-500/15 via-fuchsia-500/15 to-rose-500/15" />
+                    <p className="text-sm text-muted-foreground">{p.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <span key={t} className="rounded-full border border-border/60 bg-background/50 px-2.5 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-4">
+                      <Button variant="outline" size="sm" asChild className="rounded-xl">
+                        <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center">
+                          Voir le code <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Compétences */}
+      <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20">
+        <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
+          <motion.h2 variants={fadeUp} className="text-2xl font-bold sm:text-3xl">Compétences clés</motion.h2>
+          <motion.p variants={fadeUp} className="mt-2 text-sm text-muted-foreground">
+            Un mix équilibré front/back pour livrer rapidement et proprement.
+          </motion.p>
+          <motion.div variants={fadeUp} className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {skills.map((s) => (
+              <div key={s} className="rounded-2xl border border-border/60 bg-background/60 p-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-border/60"><Sparkles className="h-4 w-4" /></span>
+                  <span className="font-medium">{s}</span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-24">
+        <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
+          <motion.h2 variants={fadeUp} className="text-2xl font-bold sm:text-3xl">Contact</motion.h2>
+          <motion.p variants={fadeUp} className="mt-2 text-sm text-muted-foreground">
+            Dites‑moi en plus sur votre projet — je réponds vite.
+          </motion.p>
+
+          <motion.form
+            variants={fadeUp}
+            onSubmit={(e) => {
+              e.preventDefault();
+              const data = Object.fromEntries(new FormData(e.currentTarget));
+              const body = encodeURIComponent(`${data.nom}\n${data.email}\n\n${data.message}`);
+              window.location.href = `mailto:hello@samad.dev?subject=Contact%20portfolio&body=${body}`;
+            }}
+            className="mt-6 grid gap-4 rounded-2xl border border-border/60 bg-background/60 p-6 sm:grid-cols-2"
+          >
+            <div className="sm:col-span-1">
+              <label className="mb-1 block text-xs text-muted-foreground">Nom</label>
+              <input required name="nom" className="w-full rounded-xl border border-border/60 bg-transparent px-3 py-2 outline-none ring-offset-background placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-indigo-500" placeholder="Votre nom" />
+            </div>
+            <div className="sm:col-span-1">
+              <label className="mb-1 block text-xs text-muted-foreground">Email</label>
+              <input required type="email" name="email" className="w-full rounded-xl border border-border/60 bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="votre@email.com" />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="mb-1 block text-xs text-muted-foreground">Message</label>
+              <textarea required name="message" rows={5} className="w-full resize-none rounded-xl border border-border/60 bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Décrivez votre besoin..." />
+            </div>
+            <div className="sm:col-span-2 flex items-center justify-between">
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Phone className="h-4 w-4" /> +212 XX XX XX XX
+              </div>
+              <Button type="submit" className="rounded-2xl">
+                Envoyer <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </motion.form>
+        </motion.div>
+      </section>
+
+      <footer className="border-t border-border/40 py-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 text-xs text-muted-foreground">
+          <span>© {year} Samad — Tous droits réservés.</span>
+          <a href="#hero" className="underline underline-offset-4">Retour en haut</a>
+        </div>
+      </footer>
+    </div>
+  );
+}
