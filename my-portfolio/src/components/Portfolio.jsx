@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowRight, Download, Rocket, Sparkles, Moon, Sun, Code2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import pic from "@/assets/pic.jpg";
 // ————————————————————————————————————————————————
 // Portfolio – Single-file React component
 // Tech: React + Tailwind + Framer Motion + shadcn/ui + lucide-react
@@ -100,7 +100,7 @@ export default function Portfolio() {
               <button
                 key={item.id}
                 onClick={() => scrollToId(item.id)}
-                className="text-sm text-muted-foreground transition hover:text-foreground"
+                className="text-sm text-muted-foreground font-semibold transition hover:text-foreground"
               >
                 {item.label}
               </button>
@@ -145,7 +145,7 @@ export default function Portfolio() {
               variants={fadeUp}
               className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl"
             >
-              Bonjour, je suis <span className="bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-rose-500 bg-clip-text text-transparent">Abdessamad (Samad)</span>
+              Bonjour, je suis <span className="bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-rose-500 bg-clip-text text-transparent">Abdessamad </span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -154,13 +154,13 @@ export default function Portfolio() {
               Développeur Full‑Stack passionné (React · Laravel · Spring Boot). J'aime construire des interfaces élégantes et des APIs robustes, avec des transitions fluides.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
-              <Button onClick={() => scrollToId("projects")} className="rounded-2xl">
+              <Button onClick={() => scrollToId("projects")} className="rounded-2xl   bg-cyan-700">
                 Voir mes projets <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" asChild className="rounded-2xl">
+              <Button variant="outline" asChild className="rounded-2xl bg-cyan-700">
                 <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Me contacter</a>
               </Button>
-              <Button variant="secondary" asChild className="rounded-2xl">
+              <Button variant="secondary" asChild className="rounded-2xl bg-cyan-700">
                 <a href="/cv.pdf" download>
                   <Download className="mr-2 h-4 w-4" /> Télécharger CV
                 </a>
@@ -170,8 +170,9 @@ export default function Portfolio() {
           <motion.div variants={fadeUp} className="relative mx-auto aspect-square w-full max-w-md">
             {/* Simple avatar/preview */}
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 via-fuchsia-500/20 to-rose-500/20 blur-xl" />
-            <div className="relative flex h-full w-full items-center justify-center rounded-[2rem] border border-border/50 bg-background/70 p-8 shadow-xl backdrop-blur">
-              <Code2 className="h-24 w-24" />
+            <div className="relative flex h-full w-full items-center justify-center rounded-[2rem] border border-border/50 border-2 border-cyan-500 bg-background/70  shadow-xl backdrop-blur">
+              <img src={pic} alt="Photo d'Abdessamad" className="h-full w-full object-cover rounded-[2rem]" />
+
             </div>
           </motion.div>
         </motion.div>
