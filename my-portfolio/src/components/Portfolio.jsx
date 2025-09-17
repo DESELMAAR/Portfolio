@@ -154,17 +154,64 @@ export default function Portfolio() {
               Développeur Full‑Stack passionné (React · Laravel · Spring Boot). J'aime construire des interfaces élégantes et des APIs robustes, avec des transitions fluides.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
-              <Button onClick={() => scrollToId("projects")} className="rounded-2xl   bg-cyan-700">
-                Voir mes projets <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" asChild className="rounded-2xl bg-cyan-700">
-                <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Me contacter</a>
-              </Button>
-              <Button variant="secondary" asChild className="rounded-2xl bg-cyan-700">
-                <a href="/cv.pdf" download>
-                  <Download className="mr-2 h-4 w-4" /> Télécharger CV
-                </a>
-              </Button>
+              <div className="relative inline-flex overflow-hidden rounded-2xl p-[2px]">
+                {/* Spinning gradient border */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-2xl
+               bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))]
+               animate-[spin_6s_linear_infinite]"
+                />
+                <Button
+                  onClick={() => scrollToId("projects")}
+                  className="relative rounded-[calc(1rem-2px)] bg-cyan-700"
+                >
+                  Voir mes projets <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+
+              <div className="relative inline-flex overflow-hidden rounded-2xl p-[2px]">
+                {/* Spinning gradient border */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-2xl
+               bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))]
+               animate-[spin_6s_linear_infinite]"
+                />
+                <Button
+                  variant="outline"
+                  asChild
+                  className="relative rounded-[calc(1rem-2px)] border-0 bg-cyan-700 text-white
+               hover:bg-cyan-700/90 focus-visible:ring-2 focus-visible:ring-indigo-500"
+                >
+                  <a href="#contact" className="inline-flex items-center">
+                    <Mail className="mr-2 h-4 w-4" /> Me contacter
+                  </a>
+                </Button>
+              </div>
+
+
+
+              <div className="relative inline-flex overflow-hidden rounded-2xl p-[2px]">
+                {/* Spinning gradient border */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-2xl
+               bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))]
+               animate-[spin_6s_linear_infinite]"
+                />
+                <Button
+                  variant="secondary"
+                  asChild
+                  className="relative rounded-[calc(1rem-2px)] border-0 bg-cyan-700 text-white
+               hover:bg-cyan-700/90 focus-visible:ring-2 focus-visible:ring-indigo-500"
+                >
+                  <a href="/cv.pdf" download className="inline-flex items-center">
+                    <Download className="mr-2 h-4 w-4" /> Télécharger CV
+                  </a>
+                </Button>
+              </div>
+
             </motion.div>
           </div>
           <motion.div variants={fadeUp} className="relative mx-auto aspect-square w-full max-w-md">
@@ -174,6 +221,8 @@ export default function Portfolio() {
               <img src={pic} alt="Photo d'Abdessamad" className="h-full w-full object-cover rounded-[2rem]" />
 
             </div>
+
+            
           </motion.div>
         </motion.div>
       </section>
@@ -183,7 +232,7 @@ export default function Portfolio() {
         <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
           <motion.h2 variants={fadeUp} className="text-2xl font-bold sm:text-3xl">À propos</motion.h2>
           <motion.p variants={fadeUp} className="mt-4 max-w-3xl text-muted-foreground">
-            J'orchestre des stacks modernes et maintenables, avec des tests, une CI soignée et un sens affûté de l'UX. 
+            J'orchestre des stacks modernes et maintenables, avec des tests, une CI soignée et un sens affûté de l'UX.
             Côté backend : APIs REST sécurisées (JWT, RBAC) et persistance SQL. Côté frontend : Vite, Zustand, requêtes efficientes, accessibilité et performance.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
