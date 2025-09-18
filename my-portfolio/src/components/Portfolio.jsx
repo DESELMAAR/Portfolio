@@ -3,7 +3,12 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowRight, Download, Rocket, Sparkles, Moon, Sun, Code2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import pic from "@/assets/pic.jpg";
+import pic from "@/assets/pic.png";
+
+import absence from "@/assets/absence2.png"
+import appevent from "@/assets/enent organizer.jpeg"
+
+import ordersmanager from "@/assets/ordersmanager.jpeg"
 // ————————————————————————————————————————————————
 // Portfolio – Single-file React component
 // Tech: React + Tailwind + Framer Motion + shadcn/ui + lucide-react
@@ -23,6 +28,7 @@ const stagger = {
 const projects = [
   {
     title: "Gestion d'Absences",
+    picture: absence,
     description:
       "Application Full‑Stack (Spring Boot + React) pour gérer classes, profs, emplois du temps et absences.",
     tags: ["React", "Spring Boot", "JWT", "Tailwind"],
@@ -30,6 +36,8 @@ const projects = [
   },
   {
     title: "App Événements",
+    picture: appevent,
+
     description:
       "Plateforme d'événements (création, réservation, likes) avec filtres, upload et FormData.",
     tags: ["React", "Vite", "Node", "MongoDB"],
@@ -37,6 +45,8 @@ const projects = [
   },
   {
     title: "Food Delivery API",
+    picture: ordersmanager,
+
     description:
       "API Laravel 11 (Spatie Permissions) – rôles Admin/Restaurant/Client, menus et commandes.",
     tags: ["Laravel 11", "MySQL", "REST", "Spatie"],
@@ -49,6 +59,7 @@ const skills = [
   "Laravel", "Spring Boot", "MySQL", "PostgreSQL", "Redis",
   "Docker", "Git/GitHub", "CI/CD", "JWT", "Zod",
 ];
+
 
 export default function Portfolio() {
   const [theme, setTheme] = useState("dark");
@@ -222,7 +233,7 @@ export default function Portfolio() {
 
             </div>
 
-            
+
           </motion.div>
         </motion.div>
       </section>
@@ -277,7 +288,20 @@ export default function Portfolio() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="mb-4 aspect-video w-full rounded-xl border border-border/60 bg-gradient-to-br from-indigo-500/15 via-fuchsia-500/15 to-rose-500/15" />
+                    <div className="mb-4 aspect-video w-full rounded-xl  bg-gradient-to-br from-indigo-500/15 via-fuchsia-500/15 to-rose-500/15" ><div className="relative mb-4 aspect-video w-full rounded-xl overflow-hidden">
+                      <img
+                        className="w-full h-full object-cover"
+                        src={p.picture}
+                        alt=""
+                      />
+
+                      {/* Animated cyan dot */}
+                      <span
+                        className="absolute bottom-0 h-1 w-52 rounded-md  bg-red-600 animate-slide-dot"
+                        style={{ transform: "translateX(-50%)" }} // keeps dot centered
+                      />
+                    </div>
+                    </div>
                     <p className="text-sm text-muted-foreground">{p.description}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {p.tags.map((t) => (
