@@ -1,18 +1,17 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowRight, Download, Rocket, Sparkles, Moon, Sun, Code2, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Download, Rocket, Sparkles, Moon, Sun, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import pic from "@/assets/pic.png";
 
-import absence from "@/assets/absence2.png"
-import appevent from "@/assets/enent organizer.jpeg"
+import absence from "@/assets/absence2.png";
+import appevent from "@/assets/enent organizer.jpeg";
+import ordersmanager from "@/assets/ordersmanager.jpeg";
 
-import ordersmanager from "@/assets/ordersmanager.jpeg"
 // ————————————————————————————————————————————————
-// Portfolio – Single-file React component
-// Tech: React + Tailwind + Framer Motion + shadcn/ui + lucide-react
-// Language: FR (texte), design moderne, transitions fluides
+// Portfolio – React + Tailwind + Framer Motion + shadcn/ui + lucide-react
 // ————————————————————————————————————————————————
 
 const fadeUp = {
@@ -37,7 +36,6 @@ const projects = [
   {
     title: "App Événements",
     picture: appevent,
-
     description:
       "Plateforme d'événements (création, réservation, likes) avec filtres, upload et FormData.",
     tags: ["React", "Vite", "Node", "MongoDB"],
@@ -46,7 +44,6 @@ const projects = [
   {
     title: "Food Delivery API",
     picture: ordersmanager,
-
     description:
       "API Laravel 11 (Spatie Permissions) – rôles Admin/Restaurant/Client, menus et commandes.",
     tags: ["Laravel 11", "MySQL", "REST", "Spatie"],
@@ -59,7 +56,6 @@ const skills = [
   "Laravel", "Spring Boot", "MySQL", "PostgreSQL", "Redis",
   "Docker", "Git/GitHub", "CI/CD", "JWT", "Zod",
 ];
-
 
 export default function Portfolio() {
   const [theme, setTheme] = useState("dark");
@@ -78,20 +74,39 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen  dark:from-zinc-950 dark:to-zinc-900 text-foreground selection:bg-indigo-500/30">
-      {/* Floating blobs background */}
+    <div className="min-h-screen dark:from-zinc-950 dark:to-zinc-900 text-foreground selection:bg-indigo-500/30">
+      {/* Animated background (mesh + shimmer + voile conique en rotation) */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 0.6, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute -top-20 -left-24 h-80 w-80 rounded-full bg-indigo-400/30 blur-3xl dark:bg-indigo-600/20"
+        {/* Mesh coloré flou */}
+        <div
+          className="absolute inset-0 opacity-90"
+          style={{
+            background:
+              "radial-gradient(40% 60% at 20% 10%, #06b6d4 0%, transparent 60%),\
+               radial-gradient(35% 55% at 80% 0%, #a78bfa 0%, transparent 60%),\
+               radial-gradient(45% 65% at 50% 100%, #fb7185 0%, transparent 60%),\
+               radial-gradient(30% 50% at 0% 80%, #22c55e 0%, transparent 60%)",
+            filter: "blur(42px)",
+          }}
         />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 0.55, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-          className="absolute -bottom-24 -right-16 h-96 w-96 rounded-full bg-fuchsia-400/30 blur-3xl dark:bg-fuchsia-600/20"
+
+        {/* voile conique en rotation lente */}
+        <div
+          className="absolute inset-0 animate-spin-slow"
+          style={{
+            background:
+              "conic-gradient(from 0deg at 50% 50%, #ffffff10, #0000 30%, #ffffff10 60%, #0000 100%)",
+          }}
+        />
+
+        {/* shimmer horizontal discret */}
+        <div
+          className="absolute inset-0 animate-shimmer"
+          style={{
+            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)",
+            backgroundSize: "40% 100%",
+            maskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
+          }}
         />
       </div>
 
@@ -122,7 +137,7 @@ export default function Portfolio() {
               href="https://github.com/username"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 transition hover:bg-accent"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl  transition hover:bg-accent"
             >
               <Github className="h-4 w-4" />
             </a>
@@ -130,13 +145,13 @@ export default function Portfolio() {
               href="https://linkedin.com/in/username"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 transition hover:bg-accent"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl  transition hover:bg-accent"
             >
               <Linkedin className="h-4 w-4" />
             </a>
             <button
               onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/60 transition hover:bg-accent"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl  transition hover:bg-accent"
               aria-label="Basculer le thème"
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -165,13 +180,11 @@ export default function Portfolio() {
               Développeur Full‑Stack passionné (React · Laravel · Spring Boot). J'aime construire des interfaces élégantes et des APIs robustes, avec des transitions fluides.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
+              {/* CTA 1 */}
               <div className="relative inline-flex overflow-hidden rounded-2xl p-[2px]">
-                {/* Spinning gradient border */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-2xl
-               bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))]
-               animate-[spin_6s_linear_infinite]"
+                  className="pointer-events-none absolute inset-0 rounded-2xl bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))] animate-[spin_6s_linear_infinite]"
                 />
                 <Button
                   onClick={() => scrollToId("projects")}
@@ -181,19 +194,16 @@ export default function Portfolio() {
                 </Button>
               </div>
 
+              {/* CTA 2 */}
               <div className="relative inline-flex overflow-hidden rounded-2xl p-[2px]">
-                {/* Spinning gradient border */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-2xl
-               bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))]
-               animate-[spin_6s_linear_infinite]"
+                  className="pointer-events-none absolute inset-0 rounded-2xl bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))] animate-[spin_6s_linear_infinite]"
                 />
                 <Button
                   variant="outline"
                   asChild
-                  className="relative rounded-[calc(1rem-2px)] border-0 bg-cyan-700 text-white
-               hover:bg-cyan-700/90 focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  className="relative rounded-[calc(1rem-2px)] border-0 bg-cyan-700 text-white hover:bg-cyan-700/90 focus-visible:ring-2 focus-visible:ring-indigo-500"
                 >
                   <a href="#contact" className="inline-flex items-center">
                     <Mail className="mr-2 h-4 w-4" /> Me contacter
@@ -201,21 +211,16 @@ export default function Portfolio() {
                 </Button>
               </div>
 
-
-
+              {/* CTA 3 */}
               <div className="relative inline-flex overflow-hidden rounded-2xl p-[2px]">
-                {/* Spinning gradient border */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-2xl
-               bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))]
-               animate-[spin_6s_linear_infinite]"
+                  className="pointer-events-none absolute inset-0 rounded-2xl bg-[conic-gradient(at_top_left,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))] animate-[spin_6s_linear_infinite]"
                 />
                 <Button
                   variant="secondary"
                   asChild
-                  className="relative rounded-[calc(1rem-2px)] border-0 bg-cyan-700 text-white
-               hover:bg-cyan-700/90 focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  className="relative rounded-[calc(1rem-2px)] border-0 bg-cyan-700 text-white hover:bg-cyan-700/90 focus-visible:ring-2 focus-visible:ring-indigo-500"
                 >
                   <a href="/cv.pdf" download className="inline-flex items-center">
                     <Download className="mr-2 h-4 w-4" /> Télécharger CV
@@ -225,15 +230,13 @@ export default function Portfolio() {
 
             </motion.div>
           </div>
+
+          {/* Avatar */}
           <motion.div variants={fadeUp} className="relative mx-auto aspect-square w-full max-w-md">
-            {/* Simple avatar/preview */}
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 via-fuchsia-500/20 to-rose-500/20 blur-xl" />
-            <div className="relative flex h-full w-full items-center justify-center rounded-[2rem] border border-border/50 border-2 border-cyan-500 bg-background/70  shadow-xl backdrop-blur">
+            <div className="relative flex h-full w-full items-center justify-center rounded-[2rem] border border-border/50 border-2 border-cyan-500 bg-background/70 shadow-xl backdrop-blur">
               <img src={pic} alt="Photo d'Abdessamad" className="h-full w-full object-cover rounded-[2rem]" />
-
             </div>
-
-
           </motion.div>
         </motion.div>
       </section>
@@ -288,20 +291,21 @@ export default function Portfolio() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="mb-4 aspect-video w-full rounded-xl  bg-gradient-to-br from-indigo-500/15 via-fuchsia-500/15 to-rose-500/15" ><div className="relative mb-4 aspect-video w-full rounded-xl overflow-hidden">
-                      <img
-                        className="w-full h-full object-cover"
-                        src={p.picture}
-                        alt=""
-                      />
+                    {/* Image + animation du trait/dot */}
+                    <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500/15 via-fuchsia-500/15 to-rose-500/15">
+                      <img className="h-full w-full object-cover" src={p.picture} alt="" />
 
-                      {/* Animated cyan dot */}
-                      <span
-                        className="absolute bottom-0 h-1 w-52 rounded-md  bg-red-600 animate-slide-dot"
-                        style={{ transform: "translateX(-50%)" }} // keeps dot centered
-                      />
+                      {/* Barre cyan + dot qui glisse en continu */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden">
+                        {/* piste légère */}
+                        <div className="absolute inset-0 opacity-30" style={{ background: "linear-gradient(90deg,#06b6d4,#22d3ee,#06b6d4)" }} />
+                        {/* dot */}
+                        <span className="absolute left-0 top-1/2 h-1 w-32 -translate-y-1/2 rounded-full bg-cyan-400/80 animate-slide-dot" />
+                        {/* halo */}
+                        <span className="absolute left-0 top-1/2 h-2 w-10 -translate-y-1/2 rounded-full bg-cyan-300/60 blur-sm animate-slide-dot" />
+                      </div>
                     </div>
-                    </div>
+
                     <p className="text-sm text-muted-foreground">{p.description}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {p.tags.map((t) => (
