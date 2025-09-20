@@ -116,7 +116,7 @@ export default function Portfolio() {
           <a href="#hero" className="flex items-center gap-2 font-semibold">
             <Rocket className="h-5 w-5" /> Samad · Portfolio
           </a>
-          <nav className="hidden gap-6 md:flex">
+          <nav className="hidden gap-1 md:flex">
             {[
               { id: "about", label: "À propos" },
               { id: "projects", label: "Projets" },
@@ -126,12 +126,59 @@ export default function Portfolio() {
               <button
                 key={item.id}
                 onClick={() => scrollToId(item.id)}
-                className="text-sm text-muted-foreground font-semibold transition hover:text-foreground"
+                className="
+        group relative mx-1 rounded-xl px-3 py-2 text-sm font-semibold
+        text-muted-foreground transition
+        hover:text-foreground hover:scale-[1.02]
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500
+        active:scale-[0.99]
+      "
               >
-                {item.label}
+                {/* label */}
+                <span className="relative z-10">
+                  {item.label}
+                </span>
+
+                {/* soft hover background */}
+                <span
+                  aria-hidden
+                  className="
+          pointer-events-none absolute inset-0 rounded-xl
+          bg-foreground/[0.04] opacity-0
+          transition-opacity duration-300
+          group-hover:opacity-100
+          dark:bg-white/[0.04]
+        "
+                />
+
+                {/* glowing gradient underline that slides in */}
+                <span
+                  aria-hidden
+                  className="
+          pointer-events-none absolute left-1/2 bottom-1.5 h-[2px] w-0
+          -translate-x-1/2 rounded-full
+          bg-[linear-gradient(90deg,theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500))]
+          shadow-[0_0_12px_rgba(99,102,241,0.35)]
+          transition-[width] duration-300 ease-out
+          group-hover:w-8
+        "
+                />
+
+                {/* tiny top highlight for depth */}
+                <span
+                  aria-hidden
+                  className="
+          pointer-events-none absolute inset-x-3 top-1 h-px
+          bg-gradient-to-r from-transparent via-white/30 to-transparent
+          opacity-0 transition-opacity duration-300
+          group-hover:opacity-100
+          dark:via-white/10
+        "
+                />
               </button>
             ))}
           </nav>
+
           <div className="flex items-center gap-2">
             <a
               href="https://github.com/username"
@@ -149,7 +196,7 @@ export default function Portfolio() {
             >
               <Linkedin className="h-4 w-4" />
             </a>
-      
+
           </div>
         </div>
       </header>
