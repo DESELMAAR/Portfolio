@@ -226,7 +226,7 @@ function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 260, damping: 22 }}
-            className={`fixed right-[max(1rem,env(safe-area-inset-right))] z-[60] w-72 max-w-sm sm:max-w-md ${
+            className={`fixed right-[max(1rem,env(safe-area-inset-right))] z-[60] w-92 max-w-sm sm:max-w-md ${
               open ? "bottom-2" : "bottom-[calc(max(1rem,env(safe-area-inset-bottom))+4.5rem)]"
             }`}
             role="dialog"
