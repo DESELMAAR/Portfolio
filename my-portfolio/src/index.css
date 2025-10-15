@@ -11,7 +11,7 @@ html {
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #171d92;
+  background-color: #030730;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,7 +25,7 @@ html {
 }
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #145186;
     background-color: #ffffff;
     --sb-track: rgba(0, 0, 0, 0.06);
   }
@@ -38,14 +38,25 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* OPTION A: garder l'image de fond (adoucie) */
-  /* background-image: url("./assets/bgportfolio.jpg");
+  background-image: url("./assets/bg2.jpg");
+  /* background-color: rgb(52, 96, 112); */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  filter: brightness(0.85) saturate(0.95); */
+ 
+}
+.bg{
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  /* background-image: url("./assets/bg9.jpg"); */
+  background-color: rgba(12, 13, 13, 0.7);
+  backdrop-filter: blur(5px);
 
-  /* OPTION B: uniquement le fond animé → laisse vide pour éviter la double superposition */
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+ 
 }
 
 h1 { font-size: 3.2em; line-height: 1.1; }
@@ -61,14 +72,14 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover { border-color: #0788b7; }
+button:hover { border-color: #0b1e25; }
 button:focus,
 button:focus-visible { outline: 4px auto -webkit-focus-ring-color; }
 
 /* ========= Modern Scrollbar (Firefox + WebKit) ========= */
 /* Firefox */
 html {
-  scrollbar-width: thin; /* thin | auto | none */
+  scrollbar-width: thin; 
   scrollbar-color: #22d3ee var(--sb-track);
 }
 
@@ -145,3 +156,19 @@ html {
   a:hover { color: #036a6c; }
   button { background-color: #f9f9f9; }
 }
+
+/* Seamless horizontal marquee */
+@keyframes marquee-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* move exactly one track width */
+}
+
+.marquee {
+  animation: marquee-x 30s linear infinite;  /* adjust speed: 20s faster, 40s slower */
+  will-change: transform;
+}
+
+
+
+ 
+
