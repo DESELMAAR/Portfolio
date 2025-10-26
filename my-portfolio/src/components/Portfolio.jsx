@@ -91,7 +91,7 @@ function useEscape(handler) {
 }
 
 function ChatWidget() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [messages, setMessages] = useState([
     { id: 1, role: "bot", text: "Salut ! Comment puis‑je vous aider ?" },
   ]);
@@ -233,11 +233,11 @@ function ChatWidget() {
             aria-modal="true"
             aria-label="Fenêtre de chat"
           >
-            <div className="relative rounded-[1.25rem] p-[1px] bg-[conic-gradient(from_var(--angle),theme(colors.cyan.400),theme(colors.fuchsia.500),theme(colors.rose.500),theme(colors.cyan.400))] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)]">
+            <div className="relative rounded-[1.25rem] p-[1px] bg-green-600">
               <Card className="rounded-[inherit] border border-slate-200/70 bg-gradient-to-b from-white/95 to-white/85 backdrop-blur-xl ring-1 ring-white/60">
                 {/* Header */}
-                <CardHeader className="relative flex flex-row items-center justify-between py-3">
-                  <CardTitle className="flex items-center gap-3 text-base">
+                <CardHeader className="relative flex flex-row items-center justify-between py-3 bg-green-600">
+                  <CardTitle className="flex items-center gap-3 text-base ">
                     <span className="relative inline-flex h-2.5 w-2.5 items-center justify-center">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/50" />
                       <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-emerald-500/30" />
@@ -354,7 +354,7 @@ export default function Portfolio() {
 };
 
   return (
-    <div> 
+    <div className=""> 
       <div className="bg  rounded-3xl ">
         <div className="min-h-screen  rounded-3xl backdrop-blur-2xl overflow-hidden">
           {/* Animated background (mesh + shimmer + voile conique en rotation) */}
@@ -442,7 +442,7 @@ export default function Portfolio() {
                   variants={fadeUp}
                   className="mt-4 max-w-xl text-base sm:text-lg text-muted-foreground inline-block rounded-xl px-4 py-2 bg-white/70 backdrop-blur-sm supports-[backdrop-filter]:bg-slate-200/90 ring-1 ring-white/20 shadow-sm  text-purple-900 font-semibold"
                 >
-                  Développeur Full-Stack passionné (React · Laravel · Spring Boot). J'aime construire des interfaces élégantes et des APIs robustes, avec des transitions fluides. <br />
+                  Développeur Full-Stack passionné (React · Laravel · Spring Boot). J’aime créer des interfaces élégantes et des APIs robustes—et automatiser les coulisses avec n8n (workflows, intégrations Telegram/Google Sheets, alertes) et des agents IA (RAG, résumés, recherche augmentée) pour livrer des produits fluides, fiables et intelligents. <br />
                   <p className="font-bold p-2  rounded-lg "> vous pouvez demander à mon  <button className="underline hover:no-underline" onClick={openChat}>AI agent Chat</button>  tout ce que vous voulez savoir sur mon profil</p> 
                 </motion.p>
 
