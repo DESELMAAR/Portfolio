@@ -354,9 +354,10 @@ export default function Portfolio() {
 };
 
   return (
-    <div className=""> 
-      <div className="bg  rounded-3xl ">
-        <div className="min-h-screen  rounded-3xl backdrop-blur-2xl overflow-hidden">
+    <div className=" "> 
+      <div className=" bg">
+       <div className="bg-slate-900/50 backdrop-blur-sm ">
+         <div className="min-h-screen  sm:rounded-3xl  overflow-hidden">
           {/* Animated background (mesh + shimmer + voile conique en rotation) */}
           <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
             {/* Mesh coloré flou */}
@@ -368,7 +369,7 @@ export default function Portfolio() {
           </div>
 
           {/* Navbar (now fixed) */}
-          <header className="fixed top-0 left-0 right-0 z-50 bg-green-800 backdrop-blur supports-[backdrop-filter]:bg-background/70 ">
+          <header className="fixed top-0 left-0 right-0 z-50  bg-green-800 backdrop-blur supports-[backdrop-filter]:bg-background/70 ">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
               <a href="#hero" className="flex items-center gap-2 font-semibold">
                 Samad
@@ -491,7 +492,7 @@ export default function Portfolio() {
           </section>
 
           {/* À propos */}
-          <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20">
+          <section id="about" className="mx-auto max-w-6xl  scroll-mt-24 px-4 py-20">
             <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
               <motion.h2 variants={fadeUp} className="text-2xl font-bold sm:text-3xl">À propos</motion.h2>
               <motion.p variants={fadeUp} className="mt-4 max-w-3xl text-muted-foreground inline-block text-purple-900 font-semibold rounded-xl px-4 py-2 bg-white/20 backdrop-blur-sm supports-[backdrop-filter]:bg-slate-200/90  ring-1 ring-white/20 shadow-sm">
@@ -666,6 +667,7 @@ export default function Portfolio() {
             </div>
           </footer>
         </div>
+       </div>
       </div>
       {/* Floating Chatbot */}
       <ChatWidget />

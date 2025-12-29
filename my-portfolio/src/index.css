@@ -38,7 +38,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("./assets/bg77.png");
+  background-image: url("./assets/bg011.jpg");
   /* backdrop-filter: blur(5px); */
   /* background-color: rgb(52, 96, 112); */
   background-position: center;
@@ -51,9 +51,9 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* background-image: url("./assets/bg9.jpg"); */
-  /* background-color: rgba(12, 13, 13, 0.7); */
-  backdrop-filter: blur(50px);
+  /* background-image: url("./assets/bg.jpg"); */
+  /* background-color: rgba(16, 82, 62, 0.5); */
+  /* backdrop-filter: blur(50px); */
 
   background-position: center;
   background-size: cover;
