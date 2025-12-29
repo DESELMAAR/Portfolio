@@ -439,13 +439,13 @@ export default function Portfolio() {
                   Bonjour, je suis <span className="bg-green-600 bg-clip-text text-transparent">Abdessamad</span>
                 </motion.h1>
 
-                <motion.p
+                <motion.div
                   variants={fadeUp}
                   className="mt-4 max-w-xl text-base sm:text-lg text-muted-foreground inline-block rounded-xl px-4 py-2 bg-white/70 backdrop-blur-sm supports-[backdrop-filter]:bg-slate-200/90 ring-1 ring-white/20 shadow-sm  text-purple-900 font-semibold"
                 >
                   Développeur Full-Stack passionné (React · Laravel · Spring Boot). J’aime créer des interfaces élégantes et des APIs robustes—et automatiser les coulisses avec n8n (workflows, intégrations Telegram/Google Sheets, alertes) et des agents IA (RAG, résumés, recherche augmentée) pour livrer des produits fluides, fiables et intelligents. <br />
                   <p className="font-bold p-2  rounded-lg "> vous pouvez demander à mon  <button className="underline hover:no-underline" onClick={openChat}>AI agent Chat</button>  tout ce que vous voulez savoir sur mon profil</p> 
-                </motion.p>
+                </motion.div>
 
                 {/* CTAs */}
                 <motion.div variants={fadeUp} className="mt-6 flex flex-wrap items-center gap-3">
